@@ -11,7 +11,6 @@ var fs = require('fs')
   , defaults = {
         arrow: process.env.NODE_BINDINGS_ARROW || ' → '
       , compiled: process.env.NODE_BINDINGS_COMPILED_DIR || 'compiled'
-      , runtime: process.env.NODE_RUNTIME || 'node'
       , platform: process.platform
       , arch: process.arch
       , version: process.versions.node
@@ -19,8 +18,11 @@ var fs = require('fs')
       , abi: process.versions.modules
       , bindings: 'bindings.node'
       , try: [
+	  // Tried process.env.NODE_RUNTIME but didn't work right away so just hard-code node & electron
+	  [ 'module_root', 'compiled', 'electron', 'abi', 'platform', 'arch', 'bindings' ]
+	, [ 'module_root', 'compiled', 'node', 'abi', 'platform', 'arch', 'bindings' ]
           // node-gyp's linked version in the "build" dir
-          [ 'module_root', 'build', 'bindings' ]
+        , [ 'module_root', 'build', 'bindings' ]
           // node-waf and gyp_addon (a.k.a node-gyp)
         , [ 'module_root', 'build', 'Debug', 'bindings' ]
         , [ 'module_root', 'build', 'Release', 'bindings' ]
@@ -34,7 +36,6 @@ var fs = require('fs')
         , [ 'module_root', 'build', 'default', 'bindings' ]
           // Production "Release" buildtype binary (meh...)
         , [ 'module_root', 'compiled', 'version', 'platform', 'arch', 'bindings' ]
-	, [ 'module_root', 'compiled', 'runtime', 'abi', 'platform', 'arch', 'bindings' ]
         ]
     }
 
