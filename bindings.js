@@ -15,10 +15,15 @@ var fs = require('fs')
       , platform: process.platform
       , arch: process.arch
       , version: process.versions.node
+      , runtime: 'node'
+      , abi: process.versions.modules
       , bindings: 'bindings.node'
       , try: [
+	  // Tried process.env.NODE_RUNTIME but didn't work right away so just hard-code node & electron
+	  [ 'module_root', 'compiled', 'electron', 'abi', 'platform', 'arch', 'bindings' ]
+	, [ 'module_root', 'compiled', 'node', 'abi', 'platform', 'arch', 'bindings' ]
           // node-gyp's linked version in the "build" dir
-          [ 'module_root', 'build', 'bindings' ]
+        , [ 'module_root', 'build', 'bindings' ]
           // node-waf and gyp_addon (a.k.a node-gyp)
         , [ 'module_root', 'build', 'Debug', 'bindings' ]
         , [ 'module_root', 'build', 'Release', 'bindings' ]
