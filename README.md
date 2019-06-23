@@ -1,6 +1,6 @@
 node-bindings
 =============
-### Helper module for loading your native module's .node file
+### Helper module for loading your native module's `.node` file
 
 This is a helper module for authors of Node.js native addon modules.
 It is basically the "swiss army knife" of `require()`ing your native module's
@@ -8,14 +8,13 @@ It is basically the "swiss army knife" of `require()`ing your native module's
 
 Throughout the course of Node's native addon history, addons have ended up being
 compiled in a variety of different places, depending on which build tool and which
-version of node was used. To make matters worse, now the _gyp_ build tool can
-produce either a _Release_ or _Debug_ build, each being built into different
+version of node was used. To make matters worse, now the `gyp` build tool can
+produce either a __Release__ or __Debug__ build, each being built into different
 locations.
 
 This module checks _all_ the possible locations that a native addon would be built
 at, and returns the first one that loads successfully.
 
-The environment variable NODE_RUNTIME can be not present or one of 'node', 'electron', 'node-webkit'. The default will be 'node'.
 
 Installation
 ------------
@@ -23,10 +22,10 @@ Installation
 Install with `npm`:
 
 ``` bash
-$ npm install bindings
+$ npm install --save bindings
 ```
 
-Or add it to the `"dependencies"` section of your _package.json_ file.
+Or add it to the `"dependencies"` section of your `package.json` file.
 
 
 Example
@@ -61,8 +60,6 @@ Error: Could not load the bindings file. Tried:
  → /Users/nrajlich/ref/Release/binding.node
  → /Users/nrajlich/ref/build/default/binding.node
  → /Users/nrajlich/ref/compiled/0.8.2/darwin/x64/binding.node
- → /Users/nrajlich/ref/compiled/node/48/darwin/x64/binding.node
- → /Users/nrajlich/ref/compiled/electron/50/darwin/x64/binding.node
     at bindings (/Users/nrajlich/ref/node_modules/bindings/bindings.js:84:13)
     at Object.<anonymous> (/Users/nrajlich/ref/lib/ref.js:5:47)
     at Module._compile (module.js:449:26)
@@ -72,7 +69,7 @@ Error: Could not load the bindings file. Tried:
     ...
 ```
 
-The searching for the `.node` file will originate from the first directory in which has a `package.json` file is found. 
+The searching for the `.node` file will originate from the first directory in which has a `package.json` file is found.
 
 License
 -------
