@@ -15,6 +15,7 @@ locations.
 This module checks _all_ the possible locations that a native addon would be built
 at, and returns the first one that loads successfully.
 
+The environment variable NODE_RUNTIME can be not present or one of 'node', 'electron', 'node-webkit'. The default will be 'node'.
 
 Installation
 ------------
@@ -60,6 +61,8 @@ Error: Could not load the bindings file. Tried:
  → /Users/nrajlich/ref/Release/binding.node
  → /Users/nrajlich/ref/build/default/binding.node
  → /Users/nrajlich/ref/compiled/0.8.2/darwin/x64/binding.node
+ → /Users/nrajlich/ref/compiled/node/48/darwin/x64/binding.node
+ → /Users/nrajlich/ref/compiled/electron/50/darwin/x64/binding.node
     at bindings (/Users/nrajlich/ref/node_modules/bindings/bindings.js:84:13)
     at Object.<anonymous> (/Users/nrajlich/ref/lib/ref.js:5:47)
     at Module._compile (module.js:449:26)
